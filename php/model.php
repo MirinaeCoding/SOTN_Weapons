@@ -1,8 +1,9 @@
 <?php
 
-@include('database.php');
+require('database.php'); // toujours require
 
-class model {
+class model
+{
 
     private $pdo;
 
@@ -18,38 +19,39 @@ class model {
             echo $e;
         }
     }
-    
 
-public function insertWeapons($_POST, $_FILES) {
-
-        $data = [
-            ":type" => $_POST['type'],
-            ":name" => $_POST['name'],
-            ":attributes" => $_POST['attributes'],
-            ":statistics" => $_POST['statistics'],
-            ":found" => $_POST['found'],
-            ":droprate" => $_POST['droprate'],
-            ":notes" => $_POST['notes'],
-            ":img_tmp_name" => file_get_contents($_FILES['image']['tmp_name']),
-            ":img_type" => $_FILES['image']['type']
-
-        ];
-
-        $sql = "INSERT INTO weapons VALUES (null, :type, :name, :attributes :statistics, :found, :droprate, :notes, :image, :img_type)";
+    public function insertWeapons($formdata, $imgdata)
+    {
+        $sql = "INSERT INTO weapons VALUES(null, :type, :name, :attributes, :statistics, :found, :drop, :notes, :specials,:image, :imgType)";
 
         $stmt = $this->pdo->prepare($sql);
+
+        $data = array(
+            "type" => $formdata['type'],
+            "name" => $formdata['name'],
+            "attributes" => $formdata['attributes'],
+            "statistics" => $formdata['statistics'],
+            "found" => $formdata['found'],
+            "drop" => $formdata['drop'],
+            "notes" => $formdata['notes'],
+            "specials" => $formdata['specials'],
+            "image" => file_get_contents($imgdata['tmp_name']),
+            "imgType" => $imgdata['type']
+        );
+
         $stmt->execute($data);
     }
 
 
-public function getAllWeapons($weapons)
+    public function getWeapons()
     {
         $sql = "SELECT * FROM weapons";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute([$weapons]);
-        return $stmt->fetch();
+        return $this->pdo->query($sql)->fetchAll();
+    }
+
+    public function getWeaponImage($weaponName)
+    {
+        $pdo = new PDO ('mysql:host=localhost;dbname=castlevania_sotn', 'root', '');
+        return $pdo->query("SELECT * FROM weapons WHERE name LIKE '%$weaponName%'")->fetchAll();
     }
 }
-
-
-?>

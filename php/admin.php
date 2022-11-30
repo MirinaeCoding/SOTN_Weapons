@@ -5,15 +5,13 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Weapons Insert</title>
 </head>
 
 <body>
-
         <h1>Formulaire de l'admin</h1>
 
         <form action="#" method="post" enctype="multipart/form-data">
-
                 <label for="type">Type</label>
                 <input type="text" name="type">
                 <br><br>
@@ -29,34 +27,31 @@
                 <label for="type">Found</label>
                 <input type="text" name="found">
                 <br><br>
-                <label for="type">Droprate</label>
-                <input type="text" name="droprate">
+                <label for="type">Drop</label>
+                <input type="text" name="drop">
                 <br><br>
                 <label for="type">Notes</label>
                 <input type="text" name="notes">
                 <br><br>
+                <label for="type">Specials</label>
+                <input type="text" name="specials">
+                <br><br>
                 <label for="type">Image</label>
-                <input type="file" name="image">
+                <input type="file" name="image" accept=".webp, .png, .jpeg, .jpg">
                 <br><br>
                 <input type="submit" name="btn-insert" value="Envoyer">
-
         </form>
 
-
-
-
-<?php
-
-
+        <?php
         require('../php/controller.php');
         $controller = new controller();
 
         if (isset($_POST['btn-insert'])) {
 
-                $controller->model->insertWeapons();
+                $controller->model->insertWeapons($_POST, $_FILES['image']);
         }
 
-?>
+        ?>
 
 </body>
 

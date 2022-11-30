@@ -1,4 +1,5 @@
-<?php //@require "../php/database.php" ?>
+<?php //@require "../php/database.php" 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,50 +14,50 @@
 
 <body>
 
-<div class="table-wrapper">
-    <table class="fl-table">
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Attributes</th>
-            <th>Statistics</th>
-            <th>Found</th>
-            <th>Drop</th>
-            <th>Notes</th>
-            <th>Specials</th>
-        </tr>
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Attributes</th>
+                <th>Statistics</th>
+                <th>Found</th>
+                <th>Drop</th>
+                <th>Notes</th>
+                <th>Specials</th>
+            </tr>
 
-        <tr>
-            <td><img src="../images/short_swords/basilard.webp" alt="" width="50px"></td>
-            <td><b>Basilard</b></td>
-            <td>Short Sword</td>
-            <td>Cut</td>
-            <td>ATT+1</td>
-            <td>Alchemy Laboratory</td>
-            <td>Bloody Zombie (0.81%)</td>
-            <td>Overhand Stab</td>
-            <td>←→ + [Attack] for Horizontal Knife Slash (ATT +5)</td>
-        </tr>
 
-        <tr>
-            <td><img src="../images/short_swords/were_bane.webp" alt="" width="50px"></td>
-            <td><b>Were Bane</b></td>
-            <td>Short Sword</td>
-            <td>Cut</td>
-            <td>ATT+18</td>
-            <td>-</td>
-            <td>Hunting Girl (0.11%)</td>
-            <td>Stronger against were beasts (Werewolf, Minotaur)</td>
-            <td>↓↘→ + [Attack] for continuous attack (ATT +12)</td>
-        </tr>
-        
+            <?php
+            require('../php/controller.php');
+            $controller = new controller();
+            $weapons = $controller->model->getWeapons();
+
+            // $image = $controller->model->getWeaponImage("Astral Dagger");
+
+            foreach ($weapons as $weapon) : ?>
+
+                <tr>
+                    <td><img src="data:<?= $weapon['img_type'] ?>; base64, <?= base64_encode($weapon['image']) ?>" alt="" width="70px"></td>
+                    <td><b><?= $weapon['name'] ?></b></td>
+                    <td><?= $weapon['type'] ?></td>
+                    <td><?= $weapon['attributes'] ?></td>
+                    <td><?= $weapon['statistics'] ?></td>
+                    <td><?= $weapon['found'] ?></td>
+                    <td><?= $weapon['drop'] ?></td>
+                    <td><?= $weapon['notes'] ?></td>
+                    <td><?= $weapon['specials'] ?></td>
+                </tr>
+
+            <?php endforeach; ?>
+
 
         </table>
-</div>
+    </div>
 
 
-    
+
     </table>
 
 </body>
