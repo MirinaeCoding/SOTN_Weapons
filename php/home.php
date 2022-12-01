@@ -20,11 +20,12 @@
                 <th>Image</th>
                 <th>Name</th>
                 <th>Type</th>
+                <th>Notes</th>
                 <th>Attributes</th>
                 <th>Statistics</th>
                 <th>Found</th>
                 <th>Drop</th>
-                <th>Notes</th>
+                <th>Effects</th>
                 <th>Specials</th>
             </tr>
 
@@ -42,11 +43,12 @@
                     <td><img src="data:<?= $weapon['img_type'] ?>; base64, <?= base64_encode($weapon['image']) ?>" alt="" width="70px"></td>
                     <td><b><?= $weapon['name'] ?></b></td>
                     <td><?= $weapon['type'] ?></td>
+                    <td><?= $weapon['notes'] ?></td>
                     <td><?= $weapon['attributes'] ?></td>
                     <td><?= $weapon['statistics'] ?></td>
                     <td><?= $weapon['found'] ?></td>
-                    <td><?= $weapon['drop'] ?></td>
-                    <td><?= $weapon['notes'] ?></td>
+                    <td><?= $weapon['dropped'] ?></td>
+                    <td><?= $weapon['effects'] ?></td>
                     <td><?= $weapon['specials'] ?></td>
                 </tr>
 

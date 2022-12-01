@@ -28,10 +28,13 @@
                 <input type="text" name="found">
                 <br><br>
                 <label for="type">Drop</label>
-                <input type="text" name="drop">
+                <input type="text" name="dropped">
                 <br><br>
                 <label for="type">Notes</label>
                 <input type="text" name="notes">
+                <br><br>
+                <label for="type">Effects</label>
+                <input type="text" name="effects">
                 <br><br>
                 <label for="type">Specials</label>
                 <input type="text" name="specials">
