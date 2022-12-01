@@ -27,6 +27,9 @@
                 <label for="type">Found</label>
                 <input type="text" name="found">
                 <br><br>
+                <label for="type">Buy</label>
+                <input type="text" name="buy">
+                <br><br>
                 <label for="type">Drop</label>
                 <input type="text" name="dropped">
                 <br><br>

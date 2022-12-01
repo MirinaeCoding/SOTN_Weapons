@@ -22,7 +22,7 @@ class model
 
     public function insertWeapons($formdata, $imgdata)
     {
-        $sql = "INSERT INTO weapons VALUES(null, :type, :name, :attributes, :statistics, :found, :dropped, :notes, :effects, :specials, :image, :imgType)";
+        $sql = "INSERT INTO weapons VALUES(null, :type, :name, :attributes, :statistics, :found, :buy, :dropped, :notes, :effects, :specials, :image, :imgType)";
 
         $stmt = $this->pdo->prepare($sql);
 
@@ -32,7 +32,8 @@ class model
             "attributes" => $formdata['attributes'],
             "statistics" => $formdata['statistics'],
             "found" => $formdata['found'],
-            "drop" => $formdata['dropped'],
+            "buy" => $formdata['buy'],
+            "dropped" => $formdata['dropped'],
             "notes" => $formdata['notes'],
             "effects" => $formdata['effects'],
             "specials" => $formdata['specials'],
