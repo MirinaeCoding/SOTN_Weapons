@@ -1,11 +1,7 @@
-<?php 
-//@require "../php/database.php" 
-@require "navbar.php"
-?>
+<?php @require "navbar.php" ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,32 +12,15 @@
     <title>Castlevania SOTN - Weapons</title>
 </head>
 
-<body>
+<body class="bg-gray-900">
 
-    <!-- <div class="table-wrapper">
-        <table class="fl-table">
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Notes</th>
-                <th>Attributes</th>
-                <th>Statistics</th>
-                <th>Found</th>
-                <th>Drop</th>
-                <th>Effects</th>
-                <th>Specials</th>
-            </tr>
-
-
-            <?php
+<?php
             require('../php/controller.php');
             $controller = new controller();
             $weapons = $controller->model->getWeapons();
+?>
 
-            // $image = $controller->model->getWeaponImage("Astral Dagger");
-
-            foreach ($weapons as $weapon) : ?>
+            <!--
 
                 <tr>
                     <td><img src="data:<?= $weapon['img_type'] ?>; base64, <?= base64_encode($weapon['image']) ?>" alt="" width="70px"></td>
@@ -55,14 +34,7 @@
                     <td><?= $weapon['effects'] ?></td>
                     <td><?= $weapon['specials'] ?></td>
                 </tr>
-
-            <?php endforeach; ?>
-
-
-        </table>
-    </div> -->
-
-    </table>
+            -->
 
     <div class="grid grid-cols-[1fr_3fr_1fr] gap-2">
         <div class="grid-cols-1"></div>
@@ -102,7 +74,7 @@
                                 </td>
                                 <td><?= $weapon['statistics'] ?></td>
                                 <th>
-                                    <button class="btn btn-ghost btn-xs">details</button>
+                                    <a href="item.php"><button class="btn btn-ghost btn-xs">Details</button></a>
                                 </th>
                             </tr>
                         <?php endforeach; ?>
