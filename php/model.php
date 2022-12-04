@@ -51,9 +51,9 @@ class model
         return $this->pdo->query($sql)->fetchAll();
     }
 
-    public function getWeaponImage($weaponName)
+    public function searchItem($weaponName)
     {
-        $pdo = new PDO ('mysql:host=localhost;dbname=castlevania_sotn', 'root', '');
         return $pdo->query("SELECT * FROM weapons WHERE name LIKE '%$weaponName%'")->fetchAll();
     }
+
 }

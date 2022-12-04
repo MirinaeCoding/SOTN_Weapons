@@ -33,8 +33,9 @@ class controller
         $this->model->getWeapons();
     }
 
-    public function getWeaponImage($weaponName)
+    public function searchItem($weaponName)
     {
-        $this->model->getWeaponImage($weaponName);
+        $this->model->searchItem($weaponName);
     }
+
 }
